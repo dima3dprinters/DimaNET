@@ -1,0 +1,36 @@
+1) Descargar la última imagen de Astrobox y grabarla en una tarjeta SD.
+
+
+2) Conectar la Raspberry a un router por Ethernet y buscar cual es su IP. Conectarse por SSH a esa IP con usuario pi y contraseña raspberry.
+
+
+3) Instalar el driver del chip Wi-Fi USB RTL8188eu como aparece en las instrucciones del otro fichero txt, en caso de que vayamos a usar ese dispositivo.
+
+
+4) Una vez dentro de la Raspi, en el directorio home de pi, descargar el paquete DimaNET del Github y descomprimirlo:
+
+$ wget https://github.com/dima3dprinters/DimaNET/archive/master.zip && unzip DimaNET-master.zip && rm DimaNET-master.zip
+
+
+5) Detener el servicio de Astrobox y sustituir todos sus ficheros por los nuevos modificados:
+
+$ sudo service astrobox stop
+
+$ sudo rm -r /AstroBox/* && sudo cp -r ~/DimaNET-master/AstroBox/* /AstroBox
+
+
+6) Ir al directorio tools:
+
+$ cd ~/DimaNET-master/tools
+
+Y dentro ejecutar el Makefile así:
+
+$ sudo make all
+
+
+
+Ahora ya está la DimaNET perfectamente preparada. Reiniciamos con:
+
+$ sudo reboot
+
+Y ya se activará la red Wi-Fi DimaNET y podremos usarla normalmente.
