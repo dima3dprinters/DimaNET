@@ -62,13 +62,13 @@
 		</div>
 
 		<div id="step-internet" class="step hide">
-			<h1 class="bold">Internet Setup<div class="nub"></div></h1>
+			<h1 class="bold">Configuración de Internet<div class="nub"></div></h1>
 			<div class="content">
 				<div class="success-state" align="center">
 					<img src="/img/setup/step_4_wifi-box.png" height="107"/>
-					<h3 class="bold" align="center">Success!</h3>
+					<h3 class="bold" align="center">¡Todo correcto!</h3>
 					<p>
-						Your {{variantData['productName']}} is now connected to the internet.
+						Tu {{variantData['productName']}} ya está conectada a Internet.
 					</p>
 					<hr/>
 					<div class="row hotspot-off">
@@ -77,61 +77,61 @@
 						</div>
 						<div class="small-10 medium-11 columns">
 							<label for="hotspot-off">
-								<b>Turn hotspot off when a known network is found in the future.</b><br/>
-								<small>(This can be changed later in the settings menu)</small>
+								<b>Desconectar punto de acceso cuando haya cerca una red conocida.</b><br/>
+								<small>(Esto puede cambiarse luego, en las opciones)</small>
 							</label>
 						</div>
 					</div>
-					<a class="button success radius expand" href="#astroprint"><small>Next:</small> <b>AstroPrint Account</b> <i class="icon-right-open"></i></a>
+					<a class="button success radius expand" href="#astroprint"><small>Siguiente:</small> <b>Cuenta Astroprint</b> <i class="icon-right-open"></i></a>
 				</div>
 				<div class="checking-state" align="center">
 					<i class="icon-rocket-spinner animate-spin"></i>
-					<h3 class="bold" align="center">Checking connection...</h3>
+					<h3 class="bold" align="center">Comprobando conexión...</h3>
 				</div>
 				<div class="failed-state" align="center">
 					<i class="icon-cancel-circled failed"></i>
 					<h3 class="bold" align="center"></h3>
-					<button class="success radius expand">Retry</button>
+					<button class="success radius expand">Reintentar</button>
 					<div align="right">
-						<a href="#connect-printer" class="skip-step">Skip internet. Use {{variantData['productName']}} offline <i class="icon-right-open"></i></a>
+						<a href="#connect-printer" class="skip-step">Ignorar la configuración de Internet. Utilizar {{variantData['productName']}} localmente <i class="icon-right-open"></i></a>
 					</div>
 				</div>
 				<div class="settings-state">
-					<h2 class="bold" align="center">Choose your WiFi Network</h2>
+					<h2 class="bold" align="center">Elige una red Wi-Fi</h2>
 					<div class="wifi-network-list"></div>
 					<div class="row">
 						<div class="loading-button expand">
 							<div class="small-12 medium-6 medium-push-6 columns">
-								<button class="disabled success radius connect expand bold">Connect</button>
+								<button class="disabled success radius connect expand bold">Conectar</button>
 							</div>
 							<div class="small-12 medium-6 medium-pull-6 columns">
-								<a href="#connect-printer" class="button secondary radius expand bold"><sup>*</sup>Skip</a>
+								<a href="#connect-printer" class="button secondary radius expand bold"><sup>*</sup>Ignorar</a>
 							</div>
 							<div class="small-12 columns">
 								<span class="button disabled loading success radius expand">
-									<i class="icon-rocket-spinner animate-spin"></i> Might be a while. Please be patient...
+									<i class="icon-rocket-spinner animate-spin"></i> Puede tardar un poco. Por favor, ten paciencia...
 								</span>
 							</div>
 						</div>
 					</div>
 					<p class="small">
-						<sup>*</sup> Without being connected to the internet, you can only 
-						use the {{variantData['productName']}} when you are near it. 
+						<sup>*</sup> Sin conectarte a Internet, únicamente puedes utilizar
+						tu {{variantData['productName']}} cuando estás cerca de ella. 
 					</p>
 				</div>
 			</div>
 
 			<div id="wifi-network-password-modal" class="reveal-modal medium radius" data-reveal align="center">
-				<h2 class="bold">WiFi Password</h2>
-				<p align="center">Enter the password for <span class="name bold"></span>.</p>
+				<h2 class="bold">Contraseña de la red Wi-Fi</h2>
+				<p align="center"> <span class="name bold"></span>.</p>
 				<form>
 					<input type="hidden" class="network-id-field" name="id"/>
 					<input type="password" class="network-password-field" name="password"/>
 					<div class="loading-button">
-						<a class="button secondary radius cancel" href="#internet">Cancel</a>
-						<input type="submit" class="button radius success connect" value="Connect"/>
+						<a class="button secondary radius cancel" href="#internet">Cancelar</a>
+						<input type="submit" class="button radius success connect" value="Conectar"/>
 						<span class="loading button success disabled radius">
-							<i class="icon-rocket-spinner animate-spin"></i> Might be while. Please be patient...
+							<i class="icon-rocket-spinner animate-spin"></i> Puede tardar un poco. Por favor, ten paciencia...
 						</span>
 					</div>
 				</form>
@@ -161,78 +161,78 @@
 		</div>
 
 		<div id="step-astroprint" class="step hide">
-			<h1 class="bold">AstroPrint.com Account<div class="nub"></div></h1>
+			<h1 class="bold">Cuenta de AstroPrint<div class="nub"></div></h1>
 			<div class="content">
 				<div class="checking-state" align="center">
 					<i class="icon-rocket-spinner animate-spin"></i>
-					<h3 class="bold" align="center">Checking AstroPrint.com...</h3>
+					<h3 class="bold" align="center">Comprobando en AstroPrint.com...</h3>
 				</div>
 				<div class="success-state" align="center">
 					<img src="/img/setup/step_5_rocket-launch.png" height="93"/>
 					<h4 class="bold" align="center">
 						<i class="icon-user ok"></i>
 						<span class="email"></span>
-						(<a class="logout" href="#">Logout</a>)
+						(<a class="logout" href="#">Desconectar</a>)
 					</h4>
-					<a class="button success radius expand" href="#connect-printer"><small>Next:</small> <b>Printer Connection</b> <i class="icon-right-open"></i></a>
+					<a class="button success radius expand" href="#connect-printer"><small>Next:</small> <b>Conexión de la impresora</b> <i class="icon-right-open"></i></a>
 				</div>
 				<div class="settings-state">
 					<img src="/img/setup/step_5_rocket-launch.png" height="93"/>
 					<p>
-						This allows you to slice, store, and print through our cloud servers. Sign in below or <a target="_astroprint" href="http://www.astroprint.com/account/signup">create a new account</a>.
+						Esto te permite laminar, guardar ficheros e imprimir a través de los servidores de AstroPrint. Inicia sesión debajo o <a target="_astroprint" href="http://www.astroprint.com/account/signup">crea una nueva cuenta</a>.
 					</p>
 					<form>
 						<label for="email">
-							<i class="icon-user"></i> <b>Email</b> (<a target="_astroprint" href="https://www.astroprint.com/account/signup">don't have account?</a>)
+							<i class="icon-user"></i> <b>Email</b> (<a target="_astroprint" href="https://www.astroprint.com/account/signup">¿No tienes cuenta?</a>)
 							<input type="email" id="email" class="radius" name="email"/>
 						</label>
 						<label for="password">
-							<i class="icon-lock"></i> <b>Password</b> (<a target="_astroprint" href="https://www.astroprint.com/account/forgot">forgot?</a>)
+							<i class="icon-lock"></i> <b>Contraseña</b> (<a target="_astroprint" href="https://www.astroprint.com/account/forgot">¿La olvidaste?</a>)
 							<input type="password" id="password" class="radius" name="password"/>
 						</label>
 						<div align="center">
 							<div class="loading-button expand">
-								<button class="success radius submit-action expand" href="#connect-printer"><small>Next:</small> <b>Printer Connection</b> <i class="icon-right-open"></i></button>
-								<span class="button success disabled radius loading expand"><i class="icon-rocket-spinner animate-spin"></i> Logging in...</span>
+								<button class="success radius submit-action expand" href="#connect-printer"><small>Siguiente:</small> <b>Conexión de la impresora</b> <i class="icon-right-open"></i></button>
+								<span class="button success disabled radius loading expand"><i class="icon-rocket-spinner animate-spin"></i> Entrando...</span>
 							</div>
 						</div>
 					</form>
 					<div align="right">
-						<a href="#connect-printer" class="skip-step">Skip AstroPrint Account <i class="icon-right-open"></i></a>
+						<a href="#connect-printer" class="skip-step">Ignorar cuenta de AstroPrint <i class="icon-right-open"></i></a>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div id="step-connect-printer" class="step hide">
-			<h1 class="bold">Connect Your Printer<div class="nub"></div></h1>
+			<h1 class="bold">Conectar la impresora<div class="nub"></div></h1>
 			<div class="content">
 				<img src="/img/setup/step_6_connect-box.png" height="90"/>
 				<p align="center">
-					Plug your printer's USB in the {{variantData['productName']}} and click continue when done.
+					Enchufa el USB de tu impresora en la {{variantData['productName']}} y clica en Continuar tras ello.
 				</p>
-				<a href="#printer" class="button success radius share-button bold expand">Continue</a>
+				<a href="#printer" class="button success radius share-button bold expand">Continuar</a>
 				<div align="right">
-					<a class="skip-step" href="#share">Skip and Configure Later <i class="icon-right-open"></i></a>
+					<a class="skip-step" href="#share">Ignorar y configurar más tarde <i class="icon-right-open"></i></a>
 				</div>
 			</div>
 		</div>
 
 		<div id="step-printer" class="step hide">
-			<h1 class="bold">Connect Your Printer<div class="nub"></div></h1>
+			<h1 class="bold">Conectar la impresora<div class="nub"></div></h1>
 			<div class="content">
 				<img src="/img/setup/step_6.2_connected-box.png" height="76"/>
 				<div class="checking-state" align="center">
 					<i class="icon-rocket-spinner animate-spin"></i>
-					<h3 class="bold" align="center">Checking Printer Settings...</h3>
+					<h3 class="bold" align="center">Comprobando las opciones de impresora...</h3>
 				</div>
 				<div class="settings-state">
 					<p>
-						Select your connection settings.
+						Selecciona tus opciones de conexión.
 					</p>
 					<form></form>
 					<div align="right">
-						<a href="#share" class="skip-step">Skip Printer Connection <i class="icon-right-open"></i></a>
+						<a href="#share" class="skip-step">Ignorar conexión de impresora <i class="icon-right-open"></i></a>
 					</div>
 				</div>
 			</div>
@@ -240,12 +240,12 @@
 				<label for="settings-printer-driver" class="bold">
 					Driver
 					<select id="settings-printer-driver" name="driver">
-						<option value="marlin" <%= settings.driver == 'marlin' ? 'selected' : '' %>>GCODE - Marlin firmware</option>
-						<option value="s3g" <%= settings.driver == 's3g' ? 'selected' : '' %>> X3G - Sailfish / Makerbot firmware</option>
+						<option value="marlin" <%= settings.driver == 'marlin' ? 'seleccionado' : '' %>>GCODE - Marlin firmware</option>
+						<option value="s3g" <%= settings.driver == 's3g' ? 'seleccionado' : '' %>> X3G - Sailfish / Makerbot firmware</option>
 					</select>
 				</label>
 				<label for="settings-serial-port" class="bold">
-					USB Device
+					Dispositivo USB
 					<% if (settings.portOptions.length > 0) { %>
 						<% if (settings.portOptions.length > 1) { %>
 							<select id="settings-serial-port" name="port">
@@ -260,8 +260,8 @@
 						<% } %>
 					<% } else { %>
 						<p>
-						No printer detected. Is your printer plugged in?<br/>
-						<a href="#" class="retry-ports bold">Plug printer and retry &raquo; </a>
+						No se detectó ninguna impresora. ¿Se encuentra conectada?<br/>
+						<a href="#" class="retry-ports bold">Conecta la impresora e inténtalo de nuevo &raquo; </a>
 						</p>
 					<% } %>
 				</label>
@@ -269,7 +269,7 @@
 					<label for="settings-baudrate" class="bold">Baud Rate
 						<select id="settings-baudrate" name="baudrate">
 							<% _.each(settings.baudrateOptions, function(e) { %>
-								<option value="<%= e %>"<%= settings.baudrate == e[0] ? ' selected' : '' %>><%= e %></option>
+								<option value="<%= e %>"<%= settings.baudrate == e[0] ? ' seleccionado' : '' %>><%= e %></option>
 							<% }) %>
 						</select>
 					</label>
@@ -278,7 +278,7 @@
 					<div align="center">
 						<div class="loading-button expand">
 							<button class="button success radius submit-action expand bold" href="#share">Connect</button>
-							<span class="button success disabled radius loading expand"><i class="icon-rocket-spinner animate-spin"></i> Connecting...</span>
+							<span class="button success disabled radius loading expand"><i class="icon-rocket-spinner animate-spin"></i> Conectando...</span>
 						</div>
 					</div>
 				<% } %>
@@ -299,8 +299,8 @@
 					</div>
 				</div>
 				<div class="loading-button expand">
-					<a class="button radius success bold setup-done expand" href="#">Start Printing <i class="icon-right-open"></i></a>
-					<span class="button disabled success bold expand loading"><i class="icon-rocket-spinner animate-spin"></i> Launching</span>
+					<a class="button radius success bold setup-done expand" href="#">Comenzar a imprimir <i class="icon-right-open"></i></a>
+					<span class="button disabled success bold expand loading"><i class="icon-rocket-spinner animate-spin"></i> Iniciando</span>
 				</div>
 			</div>
 		</div>

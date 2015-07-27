@@ -29,7 +29,7 @@ def readPrintFiles():
 @api.route("/files/<string:origin>", methods=["GET"])
 def readPrintFilesForOrigin(origin):
 	if origin not in [FileDestinations.LOCAL, FileDestinations.SDCARD]:
-		return make_response("Unknown origin: %s" % origin, 404)
+		return make_response("Origen desconocido: %s" % origin, 404)
 
 	files = _getFileList(origin)
 
@@ -91,13 +91,13 @@ def uploadPrintFile(target):
 	printer = printerManager()
 
 	if not target in [FileDestinations.LOCAL, FileDestinations.SDCARD]:
-		return make_response("Unknown target: %s" % target, 404)
+		return make_response("Objetivo desconocido: %s" % target, 404)
 
 	if not "file" in request.files.keys():
-		return make_response("No file included", 400)
+		return make_response("No se ha incluido ningún fichero", 400)
 
 	if target == FileDestinations.SDCARD and not settings().getBoolean(["feature", "sdSupport"]):
-		return make_response("SD card support is disabled", 404)
+		return make_response("El soporte para tarjetas SD se encuentra deasctivado", 404)
 
 	file = request.files["file"]
 	sd = target == FileDestinations.SDCARD
@@ -107,9 +107,9 @@ def uploadPrintFile(target):
 	if sd:
 		# validate that all preconditions for SD upload are met before attempting it
 		if not (printer.isOperational() and not (printer.isPrinting() or printer.isPaused())):
-			return make_response("Can not upload to SD card, printer is either not operational or already busy", 409)
+			return make_response("No se pudo guardar el fichero en la tarjeta SD, la impresora está o bien inoperativa o bien ocupada", 409)
 		if not printer.isSdReady():
-			return make_response("Can not upload to SD card, not yet initialized", 409)
+			return make_response("No se pudo guardar el fichero en la tarjeta SD, aún no se ha iniciado", 409)
 
 	# determine current job
 	currentFilename = None
@@ -124,11 +124,11 @@ def uploadPrintFile(target):
 	# determine future filename of file to be uploaded, abort if it can't be uploaded
 	futureFilename = printer.fileManager.getFutureFilename(file)
 	if futureFilename is None or (not settings().getBoolean(["cura", "enabled"]) and not printer.fileManager.isValidFilename(futureFilename)):
-		return make_response("Can not upload file %s, wrong format?" % file.filename, 415)
+		return make_response("No puedo subirse el fichero %s, ¿formato erróneo?" % file.filename, 415)
 
 	# prohibit overwriting currently selected file while it's being printed
 	if futureFilename == currentFilename and target == currentOrigin and printer.isPrinting() or printer.isPaused():
-		return make_response("Trying to overwrite file that is currently being printed: %s" % currentFilename, 409)
+		return make_response("Intento de sobreescritura del fichero actualmente imprimiéndose: %s" % currentFilename, 409)
 
 	def fileProcessingFinished(filename, absFilename, destination):
 		"""
@@ -242,7 +242,7 @@ def printFileCommand(filename, target):
 					time.sleep(1)
 
 				if not printer.isOperational():
-					return make_response("The printer is not responding, can't start printing", 409)
+					return make_response("La impresora no responde, no se puede comenzar a imprimir", 409)
 
 			printAfterLoading = True
 
@@ -261,10 +261,10 @@ def printFileCommand(filename, target):
 @restricted_access
 def deletePrintFile(filename, target):
 	if not target in [FileDestinations.LOCAL, FileDestinations.SDCARD]:
-		return make_response("Unknown target: %s" % target, 404)
+		return make_response("Objetivo desconocido: %s" % target, 404)
 
 	if not _verifyFileExists(target, filename):
-		return make_response("File not found on '%s': %s" % (target, filename), 404)
+		return make_response("Fichero no encontrado en '%s': %s" % (target, filename), 404)
 
 	sd = target == FileDestinations.SDCARD
 
@@ -279,7 +279,7 @@ def deletePrintFile(filename, target):
 
 	# prohibit deleting the file that is currently being printed
 	if currentFilename == filename and currentSd == sd and (printer.isPrinting() or printer.isPaused()):
-		make_response("Trying to delete file that is currently being printed: %s" % filename, 409)
+		make_response("Se intentó eliminar un fichero actualmente imprimiéndose: %s" % filename, 409)
 
 	# deselect the file if it's currently selected
 	if currentFilename is not None and filename == currentFilename:

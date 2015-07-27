@@ -1,6 +1,6 @@
 <div class="row heading">
 	<div class="small-12 title-heading">
-		<h1 class="bold">Settings</h1>
+		<h1 class="bold">Opciones</h1>
 	</div>
 </div>
 
@@ -8,28 +8,29 @@
 	<div class="hide-for-small-only medium-5  large-4 columns">
 		<div id="settings-side-bar">
 			<ul class="side-nav">
-				<li class="heading bold">Printer</li>
-				<li class="active printer-connection"><a href="#settings/printer-connection">Connection</a></li>
-				<li class="printer-profile dotted"><a href="#settings/printer-profile">Profile</a></li>
+				<li class="heading bold">Impresora</li>
+				<li class="active printer-connection"><a href="#settings/printer-connection">Conexión</a></li>
+				<li class="printer-profile dotted"><a href="#settings/printer-profile">Perfil</a></li>
 				<li class="heading bold">Internet</li>
-				<li class="internet-connection"><a href="#settings/internet-connection">Connection</a></li>
+				<li class="internet-connection"><a href="#settings/internet-connection">Conexión</a></li>
 				<li class="heading bold">Software</li>
-				<li class="software-update"><a href="#settings/software-update">Update</a></li>
-				<li class="software-advanced dotted"><a href="#settings/software-advanced">Advanced</a><li>
+				<li class="software-update"><a href="#settings/software-update">Actualizar</a></li>
+				<li class="software-advanced dotted"><a href="#settings/software-advanced">Avanzado</a><li>
 			</ul>
 		</div>
 	</div>
 	<div class="small-12 medium-7 large-8 columns">
 		
 			<div class="show-for-small zebra">
-				<h1 class="bold" align="center">Printer Connection</h1>
+				<h1 class="bold" align="center">Conexión de la impresora</h1>
 			</div>
 			<div id="printer-connection" class="settings-page">
 			<div class="row connection-status">
 				<div class="small-12">
-					<span class="connecting"><i class="icon-rocket-spinner animate-spin"></i> Connecting...</span>
-					<span class="failed"><i class="icon-attention"></i> No connection to printer.</span>
-					<span class="connected"><i class="icon-3d-printer"></i> Connected to printer.</span>
+					<span class="connecting"><i class="icon-rocket-spinner animate-spin"></i> Conectando...</span>
+					<span></span>
+					<span class="failed"><i class="icon-attention"></i> No hay conexión a la impresora.</span>
+					<span class="connected"><i class="icon-3d-printer"></i> Conectado a la impresora.</span>
 				</div>
 			</div>
 			<form></form>
@@ -40,12 +41,12 @@
 			<div class="row">
 				<div class="small-12">
 					<label for="settings-serial-port" class="bold">
-						USB Device <small>(<a href="#" class="retry-ports"><i class="icon-refresh"></i> Re-scan</a>)</small>
+						Dispositivo USB <small>(<a href="#" class="retry-ports"><i class="icon-refresh"></i> Reescanear</a>)</small>
 						<% if (settings.serial.portOptions.length > 0) { %>
 							<% if (settings.serial.portOptions.length > 1) { %>
 								<select id="settings-serial-port" name="port">
 									<% _.each(settings.serial.portOptions, function(e) { %>
-										<option value="<%= e[0] %>"<%= settings.serial.port == e[0] ? ' selected' : '' %>><%= e[1] %></option>
+										<option value="<%= e[0] %>"<%= settings.serial.port == e[0] ? ' seleccionado' : '' %>><%= e[1] %></option>
 									<% }) %>
 								</select>
 							<% } else { %>
@@ -55,8 +56,8 @@
 							<% } %>
 						<% } else { %>
 							<p>
-							No printer detected. Is your printer plugged in?<br/>
-							<a href="#" class="retry-ports bold">Plug printer and retry &raquo; </a>
+							No se detectó ninguna impresora. ¿Está tu impresora conectada?<br/>
+							<a href="#" class="retry-ports bold">Conecta la impresora y prueba de nuevo &raquo; </a>
 							</p>
 						<% } %>
 					</label>
@@ -68,7 +69,7 @@
 						<label for="settings-baudrate" class="bold">Baud Rate
 							<select id="settings-baudrate" name="baudrate">
 								<% _.each(settings.serial.baudrateOptions, function(e) { %>
-									<option value="<%= e %>"<%= settings.serial.baudrate == e[0] ? ' selected' : '' %>><%= e %></option>
+									<option value="<%= e %>"<%= settings.serial.baudrate == e[0] ? ' seleccionado' : '' %>><%= e %></option>
 								<% }) %>
 							</select>
 						</label>
@@ -78,8 +79,8 @@
 			<% if (settings.serial.portOptions.length > 0 && ( settings.serial.baudrateOptions.length > 0 || settings.driver == 's3g') )  { %>
 				<div align="center">
 					<div class="loading-button test-connection">
-						<button class="success radius">Test Connection</button>
-						<span class="button disabled radius success loading">Connecting...</span>
+						<button class="success radius">Comprobar conexión</button>
+						<span class="button disabled radius success loading">Conectando...</span>
 					</div>
 				</div>
 			<% } %>
@@ -87,7 +88,7 @@
 
 		<div class="show-for-small zebra">
 			
-			<h1 class="bold" align="center">Printer Profile</h1>
+			<h1 class="bold" align="center">Perfil de impresora</h1>
 		</div>
 		<div id="printer-profile" class="settings-page hide">
 			<script type="text/template" id="printer-profile-settings-page-template">
@@ -102,7 +103,7 @@
 								</select>
 							</label>
 							<label for="extruder-count" class="bold">
-								No. of Extruders
+								Nº de extrusores
 							</label>
 							<select id="extruder-count" name="extruder_count">
 								<option value='1'>1</option>
@@ -112,18 +113,18 @@
 							</select>
 							<div class="input-wrapper">
 								<label for="max-nozzle-temp" class="bold">
-									Max. Nozzle Temperature
+									Max. temperatura de boquilla
 								</label>
 								<div class="row collapse">
 							        <div class="small-9 columns">
 							        	<input id="max-nozzle-temp" name="max_nozzle_temp" type="text" value="<%= settings.max_nozzle_temp %>" required pattern="integer"/>
-							        	<small class="error">Invalid Nozzle Temperature.</small>
+							        	<small class="error">Temperatura no válida.</small>
 							        </div>
 							        <div class="small-3 columns"><span class="postfix">&deg;C</div>
 							    </div>
 							</div>
 							<label for="heated-bed" class="bold">
-								Heated Bed
+								Cama caliente
 							</label>
 							<div class="switch radius">
 							  <input id="heated-bed" name="heated_bed" type="checkbox" <% if (settings.heated_bed) { %> value="yes" checked<% } %>>
@@ -131,20 +132,20 @@
 							</div>
 							<div class="input-wrapper max_bed_temp<% if (!settings.heated_bed) { %> hide<% } %>">
 								<label for="max-bed-temp" class="bold">
-									Max. Bed Temperature
+									Max. temperatura de cama
 								</label>
 								<div class="row collapse">
 							        <div class="small-9 columns">
 							        	<input id="max-bed-temp" name="max_bed_temp" type="text" value="<%= settings.max_bed_temp %>" required pattern="integer"/>
-							        	<small class="error">Invalid Bed Temperature.</small>
+							        	<small class="error">Temperatura de cama no válida.</small>
 							        </div>
 							        <div class="small-3 columns"><span class="postfix">&deg;C</div>
 							    </div>
 							</div>
 							<hr/>
 							<div class="loading-button">
-								<button class="success radius">Save Profile</button>
-								<span class="loading button radius success disabled"><i class="icon-rocket-spinner animate-spin"></i> Saving...</span>
+								<button class="success radius">Guardar perfil</button>
+								<span class="loading button radius success disabled"><i class="icon-rocket-spinner animate-spin"></i> Guardando...</span>
 							</div>
 						</form>
 					</div>
@@ -153,32 +154,32 @@
 		</div>
 
 		<div class="show-for-small zebra">
-			<h1 class="bold" align="center">Internet Connection</h1>
+			<h1 class="bold" align="center">Conexión a Internet</h1>
 		</div>
 		<div id="internet-connection" class="settings-page hide"></div>
 		<div id="wifi-network-list-modal" class="reveal-modal medium radius" data-reveal align="center">
-			<h2 class="bold">Select a WiFi Network</h2>
+			<h2 class="bold">Selecciona una red Wi-Fi</h2>
 			<div class="modal-content"></div>
 			<div class="modal-actions">
-				<button class="secondary radius" onclick="$('#wifi-network-list-modal').foundation('reveal', 'close')">Cancel</button>
+				<button class="secondary radius" onclick="$('#wifi-network-list-modal').foundation('reveal', 'close')">Cancelar</button>
 			</div>
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
 		<div id="wifi-network-password-modal" class="reveal-modal medium radius" data-reveal align="center">
-			<h2 class="bold">WiFi Password</h2>
+			<h2 class="bold">Contraseña de la red Wi-Fi</h2>
 			<div class="modal-content">
-				<p align="center">Enter the password for <span class="name bold"></span>.</p>
+				<p align="center">Introduce la contraseña para <span class="name bold"></span>.</p>
 				<form>
 					<input type="hidden" class="network-id-field" name="id"/>
 					<input type="password" class="network-password-field" name="password"/>
 				</form>
 			</div>
 			<div class="modal-actions">
-				<button class="secondary radius" onclick="$('#wifi-network-password-modal').foundation('reveal', 'close')">Cancel</button>
+				<button class="secondary radius" onclick="$('#wifi-network-password-modal').foundation('reveal', 'close')">Cancelar</button>
 				<div class="loading-button">
-					<button class="radius success connect">Connect</button>
+					<button class="radius success connect">Conectar</button>
 					<span class="loading button success disabled radius">
-						<i class="icon-rocket-spinner animate-spin"></i> Might be a while. Please be patient...
+						<i class="icon-rocket-spinner animate-spin"></i> Puede tardar un poco. Por favor, ten paciencia...
 					</span>
 				</div>
 			</div>
@@ -188,19 +189,19 @@
 		<script type="text/template" id="internet-connection-settings-page-template">
 			<div class="connection">
 				<% if (settings.networks.wired) { %>
-					<h3 class="bold">Wired Connection</h3>
-					<i class="icon-exchange"></i> Connected.
-					<div class="ip-address">IP Address: <b><%= settings.networks.wired.ip %></b></div>
+					<h3 class="bold">Conexión por cable</h3>
+					<i class="icon-exchange"></i> Conectado.
+					<div class="ip-address">Dirección IP: <b><%= settings.networks.wired.ip %></b></div>
 				<% } %>
 			</div>
 			<% if (settings.networks.manual) { %>
-				<h3 class="bold">Manually Configured</h3>
+				<h3 class="bold">Configuración manual</h3>
 				<div>Interface: <b><%= settings.networks.manual.interface %></b></div>			
-				<div class="ip-address">IP Address: <b><%= settings.networks.manual.ip %></b></div>	
+				<div class="ip-address">Dirección IP: <b><%= settings.networks.manual.ip %></b></div>	
 			<% } %>
 			<% if (settings.hasWifi) { %>
 				<div class="connection">
-					<h3 class="bold">Wireless Connection</h3>
+					<h3 class="bold">Conexión Wi-Fi</h3>
 					<% if (settings.networks.wireless) { %>
 						<% if (settings.networks.wireless.signal < 33) { %>
 							<i class="icon-wifi-signal-low"></i>
@@ -209,15 +210,15 @@
 						<% } else { %>
 							<i class="icon-wifi-signal-high"></i>
 						<% } %>
-						Connected to <b><%= settings.networks.wireless.name %></b>.
-						<div class="ip-address">IP Address: <b><%= settings.networks.wireless.ip %></b></div>
+						Conectado a <b><%= settings.networks.wireless.name %></b>.
+						<div class="ip-address">Dirección IP: <b><%= settings.networks.wireless.ip %></b></div>
 					<% } else { %>
-						Not Connected.
+						No conectado.
 					<% } %>
 					<div class="loading-button list-networks">
-						<button class="radius small">Scan WiFi networks</button>
+						<button class="radius small">Escaneo de redes Wi-Fi</button>
 						<span class="loading button disabled radius small">
-							<i class="icon-rocket-spinner animate-spin"></i> Looking for Networks...
+							<i class="icon-rocket-spinner animate-spin"></i> Buscando redes...
 						</span>
 					</div>
 				</div>
@@ -225,21 +226,21 @@
 
 			<% if (settings.hotspot && (settings.networks || !settings.hotspot.active)) { %>
 				<hr/>
-				<h3 class="bold">Local Hotspot</h3>
+				<h3 class="bold">Punto de acceso local</h3>
 				<div>
 					<% if (settings.hotspot.active) { %>
-						<h4>Running a hotspot on <b><%= settings.hotspot.name %></b></h4>
+						<h4>Creando un punto de acceso llamado <b><%= settings.hotspot.name %></b>.</h4>
 						<div class="loading-button stop-hotspot">
-							<button class="radius">Stop hotspot</button>
+							<button class="radius">Detener punto de acceso</button>
 							<span class="loading button disabled radius">
-								<i class="icon-rocket-spinner animate-spin"></i> Stopping Hotspot...
+								<i class="icon-rocket-spinner animate-spin"></i> Deteniendo punto de acceso...
 							</span>
 						</div>
 					<% } else { %>
 						<div class="loading-button start-hotspot">
-							<button class="radius">Start hotspot</button>
+							<button class="radius">Iniciar punto de acceso</button>
 							<span class="loading button disabled radius">
-								<i class="icon-rocket-spinner animate-spin"></i> Starting Hotspot...
+								<i class="icon-rocket-spinner animate-spin"></i> Iniciando punto de acceso...
 							</span>
 						</div>
 					<% } %>
@@ -249,7 +250,7 @@
 						</div>
 						<div class="small-10 large-11 columns">
 							<label for="hotspot-off">
-								<b>Turn hotspot off when a known network is found in the future.</b>
+								<b>Desconectar punto de acceso cuando haya cerca una red conocida.</b>
 							</label>
 						</div>
 					</div>
@@ -276,9 +277,9 @@
 							<div class="active-network"><i class="icon-exchange"></i></div>
 						<% } else { %>
 							<div class="loading-button">
-								<button class="radius success tiny" data-id="<%= n.id %>" data-secured="<%= n.secured ? 1 : 0 %>" data-name="<%= n.name %>">Connect</button>
+								<button class="radius success tiny" data-id="<%= n.id %>" data-secured="<%= n.secured ? 1 : 0 %>" data-name="<%= n.name %>">Conectar</button>
 								<span class="loading button disabled success tiny radius">
-									<i class="icon-rocket-spinner animate-spin"></i> Please be patient...
+									<i class="icon-rocket-spinner animate-spin"></i> Conectando...
 								</span>
 							</div>
 						<% } %>
@@ -292,10 +293,10 @@
 			<h1 class="bold" align="center">Software</h1>
 		</div>
 		<div id="software-update" class="settings-page hide" align="center">
-			<h4 align="center"><b>{{version}}</b> Installed.</h4>
+			<h4 align="center"><b>{{version}}</b> instalado.</h4>
 			<div class="loading-button check">
-				<button class="success radius">Check for updates</button>
-				<span class="button success radius loading"><i class="icon-rocket-spinner animate-spin"></i> Checking...</span>
+				<button class="success radius">Comprobar actualizaciones</button>
+				<span class="button success radius loading"><i class="icon-rocket-spinner animate-spin"></i> Comprobando...</span>
 			</div>
 		</div>
 		<div id="software-update-modal" class="reveal-modal medium radius" data-reveal>
@@ -304,34 +305,34 @@
 		</div>
 		<script type="text/template" id="software-update-modal-content">
 			<h2 class="bold">
-				<% if (data.update_available && !data.is_current) { %> Update <% } else { %> No Updates <% } %> Available
+				<% if (data.update_available && !data.is_current) { %> Actualización <% } else { %> Ninguna actualización <% } %> disponible
 			</h2>
 			<% if (data.update_available) { %>
 				<div class="modal-content">
 					<p>
 					<% if (data.is_current) { %>
-						Currently installed: <b><%= data.release.major+'.'+data.release.minor+'('+data.release.build+')'%></b>
+						Instalado actualmente: <b><%= data.release.major+'.'+data.release.minor+'('+data.release.build+')'%></b>
 					<% } else { %>
-						Version: <big class="bold"><%= data.release.major+'.'+data.release.minor+'('+data.release.build+')'%></big>
-						<br/>Published: <b><%= data.release.date ? date_format(new Date(data.release.date)) : 'Not Published.' %></b>
+						Versión: <big class="bold"><%= data.release.major+'.'+data.release.minor+'('+data.release.build+')'%></big>
+						<br/>Publicada en: <b><%= data.release.date ? date_format(new Date(data.release.date)) : 'No publicada.' %></b>
 					<% } %>
 					<% if (data.release.force_setup) { %>
-						<br/><i class="icon-attention"></i> You would need to complete the setup wizard after installing this release.
+						<br/><i class="icon-attention"></i> Necesitarás volver a realizar el asistente de configuración tras instalar esta nueva versión.
 					<% } %>
 					</p>
 					<p>
-						<b>Release Notes:</b><br/>
+						<b>Cambios en esta nueva versión:</b><br/>
 						<%= data.release.release_notes %>
 					</p>
 				</div>
 			<% } %>
 			<div class="modal-actions">
-				<button class="secondary radius<% if (data.update_available) { %> left<% } %> cancel">Cancel</button>
+				<button class="secondary radius<% if (data.update_available) { %> left<% } %> cancel">Cancelar</button>
 				<% if (data.update_available) { %>
 					<div class="loading-button right">
-						<button class="success radius go"><% if (data.is_current) { %>Re-install<% } else { %>Update<% } %></button>
+						<button class="success radius go"><% if (data.is_current) { %>Reinstalar<% } else { %>Actualizar<% } %></button>
 						<span class="button disabled success radius loading">
-							<i class="icon-rocket-spinner animate-spin"></i> Initiating...<span>
+							<i class="icon-rocket-spinner animate-spin"></i> Iniciando...<span>
 						</span>
 					</div>
 				<% } %>
@@ -340,12 +341,12 @@
 
 		<div id="software-advanced" class="settings-page hide" align="center"></div>
 		<script type="text/template" id="software-advanced-content-template">
-			<h4 class="bold">Factory Settings</h4>
-			<button class="alert radius" data-reveal-id="restore-confirm-modal">Restore Factory Settings</button>
+			<h4 class="bold">Configuración de fábrica</h4>
+			<button class="alert radius" data-reveal-id="restore-confirm-modal">Restaurar opciones por defecto</button>
 			<hr/>
 			<h4 class="bold">Logs</h4>
-			<button class="secondary radius" data-reveal-id="send-logs-modal">Send logs to AstroPrint</button><br/>
-			Size of logs directory: <span class="size bold"><%= size_format(data.sizeLogs) %></span> <button class="secondary radius tiny" data-reveal-id="delete-logs-modal">Clear</button>
+			<button class="secondary radius" data-reveal-id="send-logs-modal">Enviar logs a AstroPrint</button><br/>
+			Tamaño actual de la carpeta de logs: <span class="size bold"><%= size_format(data.sizeLogs) %></span> <button class="secondary radius tiny" data-reveal-id="delete-logs-modal">Limpiar</button>
 			<div class="row serial-container">
 				<div class="small-2 large-1 columns">
 					<input id="serial-logs" type="checkbox" <% if (data.serialActivated) { %> value="yes" checked <% } %>/>
@@ -353,74 +354,72 @@
 				<div class="small-10 large-11 columns">
 					<label for="serial-off">
 						<b>
-							Turn on serial logs. 
+							Activar el log serial. 
 						</b>
-						<i class="icon-attention"></i>You should only use this while helping solve a 
-							communication problem with your printer. This generates a large amount of data.
+						<i class="icon-attention"></i>Solamente deberías activar esta opción para ayudar a resolver un problema de comunicación con tu impresora. Esto genera una gran cantidad de datos.
 					</label>
 				</div>
 			</div>
 		</script>
 
 		<div id="restore-confirm-modal" class="reveal-modal medium radius" data-reveal>
-			<h2 class="bold">Are you sure?</h2>
+			<h2 class="bold">¿Seguro?</h2>
 			<div class="modal-content">
-				<p>This will delete all your settings and files from this {{variantData['productName']}}.</p>
+				<p>Esto borrará toda tu configuración y ficheros de esta {{variantData['productName']}}.</p>
 				<p>
 					<label for="confirmation">
-						<b>Write "RESET" to confirm</b>
+						<b>Escribe "RESET" para confirmar</b>
 						<input type="text"/>
 					</label>
 				</p>
 			</div>
 			<div class="modal-actions">
-				<button class="secondary radius left">Cancel</button>
+				<button class="secondary radius left">Cancelar</button>
 				<div class="loading-button right">
-					<button class="alert radius">Reset</button>
-					<span class="button disabled alert radius loading"><i class="icon-rocket-spinner animate-spin"></i> Resetting...</span>
+					<button class="alert radius">Reiniciar</button>
+					<span class="button disabled alert radius loading"><i class="icon-rocket-spinner animate-spin"></i> Reiniciando...</span>
 				</div>
 			</div>
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
 
 		<div id="send-logs-modal" class="reveal-modal medium radius" data-reveal>
-			<h2 class="bold">Send logs to AstroPrint</h2>
+			<h2 class="bold">Enviar logs a AstroPrint</h2>
 			<div class="modal-content">
-				<p>This sends us your device logs so that help you analyze your problem.</p>
+				<p>Esto nos envía los logs de tu dispositivo para que podamos analizar el problema.</p>
 				<p>
 					<label>
-						Do you have a support ticket?
-						<input type="text" name="ticket" placeholder="Enter support ticket # or leave empty"/>
+						¿Tienes un ticket de soporte?
+						<input type="text" name="ticket" placeholder="Introduce el nº del ticket de soporte o déjalo en blanco"/>
 					</label>
-					<textarea name="message" placeholder="Let us know what's going on (optional)"></textarea>
+					<textarea name="message" placeholder="Descríbenos qué ha sucedido (opcional)"></textarea>
 				</p>
 			</div>
 			<div class="modal-actions">
-				<button class="secondary radius left">Cancel</button>
+				<button class="secondary radius left">Cancelar</button>
 				<div class="loading-button right">
-					<button class="success radius">Send Logs</button>
-					<span class="button disabled success radius loading"><i class="icon-rocket-spinner animate-spin"></i> Sending...</span>
+					<button class="success radius">Enviar logs</button>
+					<span class="button disabled success radius loading"><i class="icon-rocket-spinner animate-spin"></i> Enviando...</span>
 				</div>
 			</div>
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
 
 		<div id="delete-logs-modal" class="reveal-modal medium radius" data-reveal>
-			<h2 class="bold">Delete AstroPrint logs</h2>
+			<h2 class="bold">Borrar los logs de DimaNET</h2>
 			<div class="modal-content">
 				<p>
-					This will delete all your past AstroPrint logs. It will help save space but might 
-					prevent us from researching a past problem you might have had.
+					Esto borrará todos los logs antiguos de DimaNET. Ayudará a recuperar espacio, pero puede dificultarnos la búsqueda de un problema que hubieras tenido anteriormente.
 				</p>
 				<p>
-					Are you sure you want to delete all logs?
+					¿Seguro de que quieres eliminar todos los logs?
 				</p>
 			</div>
 			<div class="modal-actions">
-				<button class="secondary radius left">Cancel</button>
+				<button class="secondary radius left">Cancelar</button>
 				<div class="loading-button right">
-					<button class="alert radius">Delete Logs</button>
-					<span class="button disabled alert radius loading"><i class="icon-rocket-spinner animate-spin"></i> Deleting...</span>
+					<button class="alert radius">Eliminar logs</button>
+					<span class="button disabled alert radius loading"><i class="icon-rocket-spinner animate-spin"></i> Borrando...</span>
 				</div>
 			</div>
 			<a class="close-reveal-modal">&#215;</a>

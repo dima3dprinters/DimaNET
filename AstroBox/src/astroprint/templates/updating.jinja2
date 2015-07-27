@@ -11,35 +11,34 @@
 <div id="updating-view" class="row">
 	{% if showForceUpdate %}
 		<div class="small-12 medium-11 large-8 medium-centered large-centered columns info">
-			<h1 class="bold" align="center">System Update</h1>
+			<h1 class="bold" align="center">Actualización del sistema</h1>
 			<p>
-				<i class="icon-attention"></i> Your software is currently out of date and needs to be 
-				updated in order to continue using your {{variantData['productName']}}.
+				<i class="icon-attention"></i> Tu software se encuentra actualmente obsoleto. Necesitas actualizarlo para poder seguir utilizando tu {{variantData['productName']}}.
 			</p>
-			<p><b>Version</b>: {{ releaseInfo['major'] }}.{{ releaseInfo['minor'] }}({{ releaseInfo['build'] }})</p>
-			<p><b>Release Date</b>: {% if releaseInfo['date'] -%} {{ releaseInfo['date'].strftime('%b %d, %Y') }} {%- else -%} No published {%- endif %}</p>
+			<p><b>Versión</b>: {{ releaseInfo['major'] }}.{{ releaseInfo['minor'] }}({{ releaseInfo['build'] }})</p>
+			<p><b>Fecha de publicación</b>: {% if releaseInfo['date'] -%} {{ releaseInfo['date'].strftime('%b %d, %Y') }} {%- else -%} No publicada {%- endif %}</p>
 			<p>
-				<b>Release Notes:</b>
+				<b>Cambios en esta nueva versión:</b>
 				<div class="release-notes">
 					{{ releaseInfo['release_notes'] }}
 				</div>
 			</p>
 			<center>
 				<div class="loading-button">
-					<button class="success radius bold">Install Now</button>
+					<button class="success radius bold">Instalar ahora</button>
 					<span class="loading button success disabled radius">
-						<i class="icon-rocket-spinner animate-spin"></i> Initiating...
+						<i class="icon-rocket-spinner animate-spin"></i> Iniciando...
 					</span>
 				</div>
 			</center>
 		</div>
 	{% endif %}
 	<div class="small-12 columns progress-info {%- if showForceUpdate %} hide {%- endif %}">
-		<h1 class="bold" align="center">Software Update in Progress</h1>
+		<h1 class="bold" align="center">Actualización de software en proceso</h1>
 		<div class="progress success round">
 		  <span class="meter" style="width:0%"></span>
 		</div>
-		<h3 align="center" class="message">Downloading release...</h3>
+		<h3 align="center" class="message">Descargando actualización...</h3>
 		<center>
 			<div class="progress-animation">
 				<img class="progress-img" src="/img/progress-animation-4.5.gif"/>
@@ -49,20 +48,19 @@
 		</center>
 	</div>
 	<div class="small-12 medium-11 medium-centered large-8 large-centered columns error hide">
-		<h1 class="bold" align="center">System Update Failed</h1>
+		<h1 class="bold" align="center">Actualización del sistema fallida</h1>
 		<p>
-			<i class="icon-attention"></i> An error occured and your {{variantData['productName']}} was unable to 
-			complete the update.
+			<i class="icon-attention"></i> Ocurrió un error. Tu {{variantData['productName']}} no pudo completar su actualización.
 		</p>
 		<div class="row">
 			<div class="small-12 medium-6 columns">
-				<button class="expand radius secondary bold close">Close</button>
+				<button class="expand radius secondary bold close">Cerrar</button>
 			</div>
 			<div class="small-12 medium-6 columns">
 				<div class="loading-button expand">
-					<button class="expand radius success bold retry">Retry</button>
+					<button class="expand radius success bold retry">Reintentar</button>
 					<span class="loading button success expand disabled radius">
-						<i class="icon-rocket-spinner animate-spin"></i> Initiating...
+						<i class="icon-rocket-spinner animate-spin"></i> Iniciando...
 					</span>
 				</div>
 			</div>

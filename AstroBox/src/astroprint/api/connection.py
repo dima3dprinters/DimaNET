@@ -54,13 +54,13 @@ def connectionCommand():
 		if "port" in data:
 			port = data["port"]
 			if port not in options["ports"]:
-				return make_response("Invalid port: %s" % port, 400)
+				return make_response("Puerto no válido: %s" % port, 400)
 
 		if "baudrate" in data:
 			baudrate = data["baudrate"]
 			baudrates = options["baudrates"]
 			if baudrates and baudrate not in baudrates:
-				return make_response("Invalid baudrate: %d" % baudrate, 400)
+				return make_response("Baudrate no válido: %d" % baudrate, 400)
 
 		if "save" in data and data["save"]:
 			s.set(["serial", "port"], port)

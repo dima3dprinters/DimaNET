@@ -1,5 +1,5 @@
 <div class="row print-info">
-	<h2 class="bold" align="center">Printing</h2>
+	<h2 class="bold" align="center">Imprimiendo</h2>
 	<div class="small-12 large-4 columns camera-view" align="center">
 		<div class="camera-container">
 			<i class="icon-3d-object"></i>
@@ -12,7 +12,7 @@
 						<i class="icon-picture"></i>
 						<select class="bold" align="center">
 							<option value="0">Off</option>
-							<option value="layer">Ea. layer</option>
+							<option value="layer">Cada capa</option>
 							<option value="60">1 min</option>
 							<option value="120">2 mins</option>
 							<option value="300">5 mins</option>
@@ -57,14 +57,14 @@
 	<div class="heating">
 		<div class="small-12 large-8 columns" align="center">
 			<i class="icon-temperatire blink-animation"></i>
-			<b>Heating up...</b>
+			<b>Calentando...</b>
 		</div>
 	</div>
 </div>
 
 {%- macro temp_control(class, label) %}
 	<div class="temp-bar {{class}}">
-		<h3 class="bold">Current Temp</h3>
+		<h3 class="bold">Temp. Actual</h3>
 		<label class="bold">{{label}}</label>
 		<div class="temp-curret-line">
 			<div class="triangle_left"></div>
@@ -81,7 +81,7 @@
 
 <div class="row temperatures">
 	<div class="small-12 columns">
-		<h2 class="bold">Printer Temperature</h2>
+		<h2 class="bold">Temperatura de la impresora</h2>
 		{{ temp_control('nozzle', 'Nozzle')}}
 		{{ temp_control('bed', 'Bed')}}
 	</div>
@@ -89,17 +89,17 @@
 <div class="row">
 	<div class="small-12 medium-4 columns" align="center">
 		<div class="loading-button expand">
-			<button class="success radius pause-print"><i class="icon-pause"></i> Pause Print</button>
-			<span class="button loading success radius disabled"><i class="icon-rocket-spinner animate-spin"></i> Pausing...</span>
+			<button class="success radius pause-print"><i class="icon-pause"></i> Pausar impresión</button>
+			<span class="button loading success radius disabled"><i class="icon-rocket-spinner animate-spin"></i> Pausando...</span>
 		</div>
 	</div>
 	<div class="small-12 medium-4 columns" align="center">
-		<button class="radius controls expand" style="display:none"><i class="icon-move"></i> Printer Controls</button>
+		<button class="radius controls expand" style="display:none"><i class="icon-move"></i> Controles de la impresora</button>
 	</div>
 	<div class="small-12 medium-4 columns" align="center">
 		<div class="loading-button expand">
-			<button class="alert radius stop-print"><i class="icon-cancel-circled"></i> Cancel Print</button>
-			<span class="alert radius loading button disabled"><i class="icon-rocket-spinner animate-spin"></i> Cancelling...</span>
+			<button class="alert radius stop-print"><i class="icon-cancel-circled"></i> Cancelar impresión</button>
+			<span class="alert radius loading button disabled"><i class="icon-rocket-spinner animate-spin"></i> Cancelando...</span>
 		</div>
 	</div>
 </div>

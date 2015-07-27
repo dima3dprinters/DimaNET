@@ -1,10 +1,10 @@
 <div class="row">
-	<h1 class="bold" align="center">Printer Controls</h1>
+	<h1 class="bold" align="center">Control de la impresora</h1>
 	<div class="row back-to-print panel callout radius">
 		<div class="small-12 medium-4 large-3 columns">
 			<div class="loading-button expand">
-				<button class="radius tiny expand"><i class="icon-play"></i> Resume Printing</button>
-				<span class="radius button tiny expand loading"><i class="icon-rocket-spinner animate-spin"></i> Resuming...</span>
+				<button class="radius tiny expand"><i class="icon-play"></i> Continuar impresión</button>
+				<span class="radius button tiny expand loading"><i class="icon-rocket-spinner animate-spin"></i> Continuando...</span>
 			</div>
 		</div>
 		<div class="small-12 medium-8 large-9 columns hide-for-small">
@@ -41,17 +41,17 @@
 				</center>
 			</div>
 			<div class="small-12 columns" id="extrusion-control">
-				<h2 class="bold">Extrude Filament</h2>
+				<h2 class="bold">Extruir filamento</h2>
 				<div class="small-12 medium-7 columns">
 					<div class="row extruder-switch"></div>
 				</div>
 				<div class="small-12 medium-5 columns">
 					<div class="row closer">
 						<div class="small-6 columns">
-							<button class="small radius expand success extrude">Extrude</button>
+							<button class="small radius expand success extrude">Extruir</button>
 						</div>
 						<div class="small-6 columns">
-							<button class="small radius expand success retract">Retract</button>
+							<button class="small radius expand success retract">Retraer</button>
 						</div>
 					</div>
 				</div>
@@ -59,7 +59,7 @@
 					<% if (profile.extruder_count > 1) { %>
 						<div class="small-6 columns">
 							<div class="row closer">
-								<label class="bold">Select Nozzle</label>
+								<label class="bold">Seleccionar boquilla</label>
 								<div class="small-5 columns">
 									<i class="icon-extruder"></i>
 								</div>
@@ -79,13 +79,13 @@
 					<% } %>
 
 					<div class="<% if (profile.extruder_count > 1) { %> small-6 <% } else { %> small-9 <% } %>columns">
-						<label class="bold">Filament Amount</label>
+						<label class="bold">Cantidad de filamento</label>
 						<select class="extrusion-length">
 							<option value="10" selected>10 mm</option>
 							<option value="50">50 mm</option>
 							<option value="100">100 mm</option>
 							<option value="200">200 mm</option>
-							<option value="other">Other...</option>
+							<option value="other">Otra...</option>
 						</select>
 						<div class="row collapse other hide">
 							<div class="small-8 columns">
@@ -123,18 +123,18 @@
 	<div class="medium-12 large-5 columns" id="temp-control">
 		<div class="row">
 			<div class="small-4 columns" align="center">
-				{{ temp_control('nozzle', 'Nozzle')}}
+				{{ temp_control('nozzle', 'Boquilla')}}
 			</div>
 			<div class="small-4 columns fan-control">
 				<div class="fan-control-push" align="center">
-					Current Temp
+					Temperaturas actuales
 				</div>
-				<h2 class="bold">Fans <span class="fan_icon"></span></h2>
+				<h2 class="bold">Ventiladores <span class="fan_icon"></span></h2>
 				<button class="radius small success expand fan-on">ON</button>
 				<button class="radius small secondary expand fan-off">OFF</button>
 			</div>
 			<div class="small-4 columns" align="center">
-				{{ temp_control('bed', 'Bed')}}
+				{{ temp_control('bed', 'Cama')}}
 			</div>
 		</div>
 	</div>

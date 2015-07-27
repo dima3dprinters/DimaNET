@@ -1,6 +1,6 @@
 <div class="row heading">
 	<div class="small-12 title-heading">
-		<h1 class="bold">File Manager</h1>
+		<h1 class="bold">Gestor de ficheros</h1>
 	</div>
 </div>
 
@@ -8,7 +8,7 @@
 	<div class="row upload-buttons">
 		<div class="small-12 medium-7 large-4 medium-centered columns">
 			<span class="file-upload-button button success radius expand" style="margin-bottom: 10px">
-				<i class="icon-upload-cloud-1"></i> Upload File ( <span class="extensions"></span> )
+				<i class="icon-upload-cloud-1"></i> Subir fichero (gcode) <!--( <span class="extensions"></span> )-->
 				<input class="file-upload" type="file" name="file" accept="">
 			</span>
 		</div>
@@ -30,18 +30,18 @@
 <div class="design-list">
 	<div class="row list-header">
 		<div class="small-12 medium-7 large-8 columns">
-			<h3 class="bold">Printable Files</h3>
+			<h3 class="bold">Ficheros imprimibles</h3>
 			{%- if user_email %} 
 				<div class="loading-button sync">
-					<button class="tiny success radius sync"><i class="icon-refresh"></i> Sync</button>
-					<span class="tiny success button radius disabled loading"><i class="icon-refresh animate-spin"></i> Sync</span>
+					<button class="tiny success radius sync"><i class="icon-refresh"></i> Sincronizar</button>
+					<span class="tiny success button radius disabled loading"><i class="icon-refresh animate-spin"></i> Sincronizar</span>
 				</div>
 			{%- endif %}
 		</div>
 		<div class="small-12 medium-5 large-4 columns">
 			<ul class="button-group radius even-2 storage">
-			  <li><a href="#" class="button small secondary local">Local</a></li>
-			  <li><a href="#" class="button small secondary cloud">Cloud</a></li>
+			  <li><a href="#" class="button small secondary local">En local</a></li>
+			  <li><a href="#" class="button small secondary cloud">En la nube</a></li>
 			</ul>
 		</div>
 	</div>
@@ -74,7 +74,7 @@
 					<% if (p.local_filename) { %>
 						<div class="loading-button">
 							<a class="remove idle" href="#">
-								<i class="icon-trash with-separator" title="Remove from {{variantData['productName']}}"></i>
+								<i class="icon-trash with-separator" title="Eliminar de {{variantData['productName']}}"></i>
 							</a>
 							<span class="loading"><i class="icon-rocket-spinner animate-spin"></i></span>
 						</div>
@@ -83,16 +83,16 @@
 						</a>
 					<% } else { %>
 						<a class="download" href="#">
-							<i class="icon-download-cloud" title="Download to {{variantData['productName']}}"></i>
+							<i class="icon-download-cloud" title="Descargar a {{variantData['productName']}}"></i>
 						</a>
 						<a class="print" href="#">
-							<i class="icon-3d-printer" title="Print"></i>
+							<i class="icon-3d-printer" title="Imprimir"></i>
 						</a>
 					<% } %>
 				</div>
 				<div class="print-settings">
 					<% if (p.local_only) { %>
-						This file is <b>only</b> stored on this {{variantData['productName']}}
+						Este fichero <b>sólo</b> se encuentra almacenado en esta {{variantData['productName']}}
 					<% } else { %>
 						<a href="<%= p.printer.info_link %>" target="_astroprint"><%= p.printer.name %></a>
 						/
@@ -108,22 +108,22 @@
 				<div class="print-info">
 					<% if (p.info) { %>
 						<% if (p.info.size) { %>
-							<b>Model Size:</b> <span class="hl"><%= p.info.size.x.toFixed(2) %></span> x <span class="hl"><%= p.info.size.y.toFixed(2) %></span> x <span class="hl"><%= p.info.size.z.toFixed(2) %></span> mm<br/>
+							<b>Tamaño del modelo:</b> <span class="hl"><%= p.info.size.x.toFixed(2) %></span> x <span class="hl"><%= p.info.size.y.toFixed(2) %></span> x <span class="hl"><%= p.info.size.z.toFixed(2) %></span> mm<br/>
 						<% } %>
 						<% if (p.info.print_time) { %>
-							<b>Print Time:</b> <span class="hl"><%= time_format(p.info.print_time) %></span><br/>
+							<b>Tiempo de impresión:</b> <span class="hl"><%= time_format(p.info.print_time) %></span><br/>
 							<% if (p.info.layer_height) { %>
-								<b>Layer Height:</b> <span class="hl"><%= p.info.layer_height %></span> mm<br/>
+								<b>Altura de capa:</b> <span class="hl"><%= p.info.layer_height %></span> mm<br/>
 							<% } %>
 							<% if (p.info.layer_count) { %>
-								<b>Number of Layers:</b> <span class="hl"><%= p.info.layer_count %></span><br/>
+								<b>Número de capas:</b> <span class="hl"><%= p.info.layer_count %></span><br/>
 							<% } %>
 						<% } %>
 						<% if (p.info.filament_volume) { %>
-							<b>Filament Used:</b> <span class="hl"><%= p.info.filament_volume ? (p.info.filament_volume/1000).toFixed(2) : '--' %></span> cm<sup>3</sup>
+							<b>Filamento usado:</b> <span class="hl"><%= p.info.filament_volume ? (p.info.filament_volume/1000).toFixed(2) : '--' %></span> cm<sup>3</sup>
 						<% } %>
 					<% } else { %>
-						<i class="icon-rocket-spinner animate-spin"></i> Analyzing G-Code
+						<i class="icon-rocket-spinner animate-spin"></i> Analizando G-code
 					<% } %>
 				</div>
 			</div>
@@ -149,7 +149,7 @@
 				· <i class="icon-stopwatch" title="Print Time"></i> <%= time_format(p.info.print_time) %>
 			<% } %>
 		<% } else { %>
-			· <i class="icon-rocket-spinner animate-spin"></i> Analyzing G-Code
+			· <i class="icon-rocket-spinner animate-spin"></i> Analizando
 		<% } %>
 	</div>
 	<div class="small-2 large-1 columns right-section">
@@ -157,16 +157,16 @@
 			<% if (p.local_filename) { %>
 				<div class="loading-button print">
 					<a href="#" class="print idle">
-						<i class="icon-3d-printer" title="Print"></i>
+						<i class="icon-3d-printer" title="Imprimir"></i>
 					</a>
 					<span class="loading"><i class="icon-rocket-spinner animate-spin"></i></span>
 				</div>
 			<% } else { %>
 				<a href="#" class="download">
-					<i class="icon-download-cloud" title="Download to {{variantData['productName']}}"></i>
+					<i class="icon-download-cloud" title="Descargar a {{variantData['productName']}}"></i>
 				</a>
 				<div class="download-progress">
-					<a href="#" class="dw-cancel"><i class="icon-cancel-circled" title="Cancel download"></i></a>
+					<a href="#" class="dw-cancel"><i class="icon-cancel-circled" title="Cancelar descarga"></i></a>
 					<span class="bold">0<i>%</i></span>
 				</div>
 			<% } %>

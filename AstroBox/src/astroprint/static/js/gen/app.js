@@ -9695,7 +9695,7 @@ var FileUploadBase = Backbone.View.extend({
                     break;
                 case "print":
                     this.progress(100), noty({
-                        text: "File uploaded succesfully :)",
+                        text: "Fichero subido correctamente",
                         type: "success",
                         timeout: 3E3
                     }), app.router.navigate("files", {
@@ -9805,7 +9805,7 @@ var PrintFileInfoDialog = Backbone.View.extend({
                     success: _.bind(function() {
                         c.get("local_only") ? this.file_list_view.file_list.remove(c) : c.set("local_filename", !1);
                         noty({
-                            text: b + " deleted from your " + PRODUCT_NAME,
+                            text: b + " borrado de tu " + PRODUCT_NAME,
                             type: "success",
                             timeout: 3E3
                         });
@@ -9814,7 +9814,7 @@ var PrintFileInfoDialog = Backbone.View.extend({
                     }, this),
                     error: function() {
                         noty({
-                            text: "Error deleting " + b,
+                            text: "Error al eliminar " + b,
                             timeout: 3E3
                         })
                     },
@@ -9918,7 +9918,7 @@ var PrintFileInfoDialog = Backbone.View.extend({
             a && a.preventDefault();
             $.getJSON("/api/astroprint/print-files/" + this.print_file.get("id") + "/download").fail(function() {
                 noty({
-                    text: "Couldn't download the print file.",
+                    text: "No se pudo descargar el fichero de impresión.",
                     timeout: 3E3
                 })
             })
@@ -9930,7 +9930,7 @@ var PrintFileInfoDialog = Backbone.View.extend({
                 method: "DELETE"
             }).fail(function() {
                 noty({
-                    text: "Unable to cancel download.",
+                    text: "No se pudo cancelar la descarga.",
                     timeout: 3E3
                 })
             })
@@ -9957,7 +9957,7 @@ var PrintFileInfoDialog = Backbone.View.extend({
                     var g = null;
                     409 == a.status && (g = a.responseText);
                     noty({
-                        text: g ? g : "There was an error starting the print",
+                        text: g ? g : "Hubo un error al comenzar la impresión",
                         timeout: 3E3
                     });
                     c.removeClass("loading")
@@ -10028,7 +10028,7 @@ var PrintFileInfoDialog = Backbone.View.extend({
                 }) : this.print_file_views;
             b.length ? _.each(b, function(b) {
                 a.append(b.$el)
-            }) : a.html('<div class="empty panel radius" align="center">\t<i class="icon-inbox empty-icon"></i>\t<h3>Nothing here yet.</h3></div>')
+            }) : a.html('<div class="empty panel radius" align="center">\t<i class="icon-inbox empty-icon"></i>\t<h3>Aún no hay nada aquí.</h3></div>')
         },
         refresh: function(a, c) {
             var b = (new Date).getTime();
@@ -10057,7 +10057,7 @@ var PrintFileInfoDialog = Backbone.View.extend({
                         }, this),
                         d = function() {
                             noty({
-                                text: "There was an error retrieving design list",
+                                text: "Hubo un error al descargar la lista de diseños",
                                 timeout: 3E3
                             });
                             g.removeClass("loading");
@@ -10105,10 +10105,10 @@ var PrintFileInfoDialog = Backbone.View.extend({
                     case "error":
                         b.removeClass("downloading");
                         noty({
-                            text: "Couldn't download the print file.",
+                            text: "No se pudo descargar el fichero de impresión.",
                             timeout: 3E3
                         });
-                        console.error("Error downloading file: " + a.reason);
+                        console.error("Error al descargar fichero: " + a.reason);
                         break;
                     case "cancelled":
                         b.removeClass("downloading")
@@ -10518,12 +10518,12 @@ var SettingsPage = Backbone.View.extend({
             this.$("a.retry-ports i").addClass("animate-spin");
             $.getJSON(API_BASEURL + "settings/printer", null, _.bind(function(a) {
                 a.serial ? (this.settings = a, this.render()) : noty({
-                    text: "No serial settings found.",
+                    text: "No se encontró una configuración serial.",
                     timeout: 3E3
                 })
             }, this)).fail(function() {
                 noty({
-                    text: "There was an error getting serial settings.",
+                    text: "Hubo un error al recuperar las opciones serial.",
                     timeout: 3E3
                 });
                 this.$("a.retry-ports i").removeClass("animate-spin")
@@ -10566,7 +10566,7 @@ var SettingsPage = Backbone.View.extend({
                     })
                 }).fail(function() {
                     noty({
-                        text: "There was an error testing connection settings.",
+                        text: "Hubo un error al comprobar las opciones de conexión.",
                         timeout: 3E3
                     })
                 }))
@@ -10611,7 +10611,7 @@ var SettingsPage = Backbone.View.extend({
         },
         invalidForm: function(a) {
             "abide.fndtn" === a.namespace && noty({
-                text: "Please check your errors",
+                text: "Por favor, comprueba tus errores",
                 timeout: 3E3
             })
         },
@@ -10631,7 +10631,7 @@ var SettingsPage = Backbone.View.extend({
                     patch: !0,
                     success: _.bind(function() {
                         noty({
-                            text: "Profile changes saved",
+                            text: "Los cambios en el perfil se han guardado",
                             timeout: 3E3,
                             type: "success"
                         });
@@ -10640,7 +10640,7 @@ var SettingsPage = Backbone.View.extend({
                     }, this),
                     error: function() {
                         noty({
-                            text: "Failed to save printer profile change",
+                            text: "Hubo un fallo al guardar los cambios en el perfil de impresora",
                             timeout: 3E3
                         });
                         c.removeClass("loading")
@@ -10673,7 +10673,7 @@ var SettingsPage = Backbone.View.extend({
                 this.render()
             }, this)).fail(function() {
                 noty({
-                    text: "There was an error getting WiFi settings.",
+                    text: "Hubo un error al recuperar la configuración Wi-Fi.",
                     timeout: 3E3
                 })
             })
@@ -10692,7 +10692,7 @@ var SettingsPage = Backbone.View.extend({
                 type: "POST",
                 success: _.bind(function(a, c, d) {
                     noty({
-                        text: "Your " + PRODUCT_NAME + " has created a hotspot. Connect to <b>" + this.settings.hotspot.name + "</b>.",
+                        text: "Tu " + PRODUCT_NAME + " ha creado un punto de acceso. Conéctate a <b>" + this.settings.hotspot.name + "</b>.",
                         type: "success",
                         timeout: 3E3
                     });
@@ -10718,7 +10718,7 @@ var SettingsPage = Backbone.View.extend({
                 type: "DELETE",
                 success: _.bind(function(a, c, d) {
                     noty({
-                        text: "The hotspot has been stopped",
+                        text: "El punto de acceso ha sido detenido",
                         type: "success",
                         timeout: 3E3
                     });
@@ -10757,7 +10757,7 @@ var SettingsPage = Backbone.View.extend({
                     }
                 }, this)).fail(function() {
                 noty({
-                    text: "There was an error retrieving networks.",
+                    text: "Hubo un error al detectar redes.",
                     timeout: 3E3
                 })
             }).complete(function() {
@@ -10776,7 +10776,7 @@ var SettingsPage = Backbone.View.extend({
                 dataType: "json"
             }).fail(function() {
                 noty({
-                    text: "There was an error saving hotspot option.",
+                    text: "Hubo un error al guardar las opciones del punto de acceso.",
                     timeout: 3E3
                 })
             })
@@ -10820,7 +10820,7 @@ var SettingsPage = Backbone.View.extend({
                 })
             }).done(function(a) {
                 a.name && a.signal && a.ip ? (noty({
-                    text: "Your " + PRODUCT_NAME + " is now connected to " + a.name + ".",
+                    text: "Tu " + PRODUCT_NAME + " está ahora conectada a " + a.name + ".",
                     type: "success",
                     timeout: 3E3
                 }), d.$el.foundation("reveal", "close"), d.parent.settings.networks.wireless = a, d.parent.render()) : a.message && noty({
@@ -10828,7 +10828,7 @@ var SettingsPage = Backbone.View.extend({
                 })
             }).fail(function() {
                 noty({
-                    text: "There was an error saving setting.",
+                    text: "Hubo un error guardando la configuración.",
                     timeout: 3E3
                 });
                 d.$el.foundation("reveal", "close")
@@ -10887,7 +10887,7 @@ var SettingsPage = Backbone.View.extend({
                         text: a.responseText,
                         timeout: 3E3
                     }) : noty({
-                        text: "There was a problem checking for new software.",
+                        text: "Hubo un problema comprobando nuevo software.",
                         timeout: 3E3
                     })
                 },
@@ -10936,7 +10936,7 @@ var SettingsPage = Backbone.View.extend({
                         text: c.responseText,
                         timeout: 3E3
                     }) : noty({
-                        text: "There was a problem updating to the new version.",
+                        text: "Hubo un problema al actualizar a la nueva versión.",
                         timeout: 3E3
                     });
                     a.removeClass("loading")
@@ -10970,7 +10970,7 @@ var SettingsPage = Backbone.View.extend({
                 this.render()
             }, this)).fail(function() {
                 noty({
-                    text: "There was an error getting software advanced settings.",
+                    text: "Hubo un error al recuperar las opciones avanzadas de software.",
                     timeout: 3E3
                 })
             })
@@ -10995,7 +10995,7 @@ var SettingsPage = Backbone.View.extend({
                 c ? $("#app").addClass("serial-log") : $("#app").removeClass("serial-log")
             }).fail(function() {
                 noty({
-                    text: "There was an error changing serial logs.",
+                    text: "Hubo un error cambiando los logs serial.",
                     timeout: 3E3
                 })
             })
@@ -11027,7 +11027,7 @@ var SettingsPage = Backbone.View.extend({
             $.post(API_BASEURL + "settings/software/logs",
                 c).done(_.bind(function() {
                 noty({
-                    text: "Logs sent to AstroPrint!",
+                    text: "Logs enviados a AstroPrint",
                     type: "success",
                     timeout: 3E3
                 });
@@ -11036,7 +11036,7 @@ var SettingsPage = Backbone.View.extend({
                 this.$("textarea[name=message]").val("")
             }, this)).fail(function() {
                 noty({
-                    text: "There was a problem sending your logs.",
+                    text: "Hubo un problema enviando tus logs.",
                     timeout: 3E3
                 })
             }).always(function() {
@@ -11072,7 +11072,7 @@ var SettingsPage = Backbone.View.extend({
                 }, this),
                 error: function() {
                     noty({
-                        text: "There was a problem clearing your logs.",
+                        text: "Hubo un problema al limpiar tus logs.",
                         timeout: 3E3
                     })
                 },
@@ -11197,7 +11197,7 @@ var ConnectionView = Backbone.View.extend({
                                 trigger: !0,
                                 replace: !0
                             }), noty({
-                                text: "Check Connection Settings.",
+                                text: "Comprobar opciones de conexión.",
                                 type: "information",
                                 timeout: 3E3
                             }))
@@ -11206,7 +11206,7 @@ var ConnectionView = Backbone.View.extend({
                         trigger: !0,
                         replace: !0
                     }), noty({
-                        text: "Check Connection Settings.",
+                        text: "Comprobar opciones de conexión.",
                         type: "information",
                         timeout: 3E3
                     }))
@@ -11234,14 +11234,14 @@ var ConnectionView = Backbone.View.extend({
         c.removeClass("blink-animation connected failed").addClass(a);
         switch (a) {
             case "blink-animation":
-                b = "Connecting to <b>" + ASTROBOX_NAME + "</b>...";
+                b = "Conectando a <b>" + ASTROBOX_NAME + "</b>...";
                 break;
             case "connected":
-                b = "Connected to <b>" + ASTROBOX_NAME +
+                b = "Conectado a <b>" + ASTROBOX_NAME +
                     "</b>";
                 break;
             case "failed":
-                b = "<b>" + ASTROBOX_NAME + "</b> is unreachable"
+                b = "No se puede acceder a <b>" + ASTROBOX_NAME + "</b>"
         }
         c.data("title", b)
     },
@@ -11251,13 +11251,13 @@ var ConnectionView = Backbone.View.extend({
         c.removeClass("blink-animation connected failed").addClass(a);
         switch (a) {
             case "blink-animation":
-                b = "Connecting to printer...";
+                b = "Conectando a la impresora...";
                 break;
             case "connected":
-                b = "Connected to printer";
+                b = "Conectado a la impresora";
                 break;
             case "failed":
-                b = "The printer is not connected"
+                b = "La impresora no está conectada"
         }
         c.data("title", b)
     },
@@ -11267,13 +11267,13 @@ var ConnectionView = Backbone.View.extend({
         c.removeClass("blink-animation connected failed").addClass(a);
         switch (a) {
             case "blink-animation":
-                b = "Connecting to the astroprint.com...";
+                b = "Conectando a astroprint.com...";
                 break;
             case "connected":
-                b = "Connected to astroprint.com";
+                b = "Conectado a astroprint.com";
                 break;
             case "failed":
-                b = "Not connected to astroprint.com"
+                b = "No conectado a astroprint.com"
         }
         c.data("title", b)
     },
@@ -11354,7 +11354,7 @@ var TurnoffConfirmationModal = Backbone.View.extend({
                 error: _.bind(function() {
                     this.$el.find(".icon-off").removeClass("blink-animation");
                     noty({
-                        text: "There was an error starting turn off sequence.",
+                        text: "Hubo un error al comenzar la secuencia de apagado.",
                         timeout: 5E3
                     })
                 }, this)
@@ -11513,7 +11513,7 @@ var TempBarHorizontalView = TempBarView.extend({
                 }
             }).fail(function() {
                 noty({
-                    text: "There was an error adjusting your print capture.",
+                    text: "Hubo un error ajustando tu captura de impresión.",
                     timeout: 3E3
                 })
             })

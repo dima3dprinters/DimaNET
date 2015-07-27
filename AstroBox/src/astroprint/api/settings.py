@@ -56,7 +56,7 @@ def getWifiNetworks():
 	if networks:
 		return jsonify(networks = networks)
 	else:
-		return jsonify({'message': "Unable to get WiFi networks"})
+		return jsonify({'message': "No se pudieron obtener redes Wi-Fi"})
 
 @api.route("/settings/internet", methods=["GET"])
 @restricted_access
@@ -85,9 +85,9 @@ def setWifiNetwork():
 		if result:
 			return jsonify(result)
 		else:
-			return ("Network %s not found" % data['id'], 404)
+			return ("Red %s no encontrada" % data['id'], 404)
 
-	return ("Invalid Request", 400)
+	return ("Petición no válida", 400)
 
 @api.route("/settings/internet/hotspot", methods=["POST"])
 @restricted_access
@@ -142,7 +142,7 @@ def resetFactorySettings():
 	from astroprint.cloud import astroprintCloud
 
 	logger = logging.getLogger(__name__)
-	logger.warning("Executing a Restore Factory Settings operation")
+	logger.warning("Ejecutando una operación de restauración de datos de fábrica")
 
 	#We log out first
 	astroprintCloud().signout()
@@ -192,7 +192,7 @@ def checkSoftwareVersion():
 	if softwareInfo:
 		return jsonify(softwareInfo);
 	else:
-		return ("There was an error checking for new software.", 400)
+		return ("Hubo un error al comprobar nuevo software", 400)
 
 @api.route("/settings/software/update", methods=['POST'])
 @restricted_access
@@ -200,7 +200,7 @@ def updateSoftwareVersion():
 	if softwareManager.updateSoftwareVersion(request.get_json()):
 		return jsonify();
 	else:
-		return ("There was an error initiating update.", 400)
+		return ("Hubo un error iniciando la actualización.", 400)
 
 @api.route("/settings/software/restart", methods=['POST'])
 @restricted_access
@@ -208,7 +208,7 @@ def restartServer():
 	if softwareManager.restartServer():
 		return jsonify();
 	else:
-		return ("There was an error trying to restart the server.", 400)
+		return ("Hubo un error intentando reiniciar el servidor.", 400)
 
 @api.route("/settings/software/logs", methods=['POST'])
 @restricted_access
@@ -216,7 +216,7 @@ def sendLogs():
 	if softwareManager.sendLogs(request.values.get('ticket', None), request.values.get('message', None)):
 		return jsonify();
 	else:
-		return ("There was an error trying to send your logs.", 500)
+		return ("Hubo un error intentando enviar tus logs.", 500)
 
 @api.route("/settings/software/logs/serial", methods=['PUT'])
 @restricted_access
@@ -233,7 +233,7 @@ def changeSerialLogs():
 		return jsonify();
 	
 	else:
-		return ("Wrong data sent in.", 400)
+		return ("Se enviaron datos erróneos.", 400)
 
 @api.route("/settings/software/logs", methods=['DELETE'])
 @restricted_access
@@ -241,4 +241,4 @@ def clearLogs():
 	if softwareManager.clearLogs():
 		return jsonify();
 	else:
-		return ("There was an error trying to clear your logs.", 500)
+		return ("Hubo un error intentando limpiar tus logs.", 500)

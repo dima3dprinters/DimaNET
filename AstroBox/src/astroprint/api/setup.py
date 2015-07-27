@@ -32,7 +32,7 @@ def not_setup_only(func):
 		if settings().getBoolean(["server", "firstRun"]):
 			return func(*args, **kwargs)
 		else:
-			return make_response("AstroBox is already setup", 403)
+			return make_response("DimaNET ya está configurada", 403)
 	return decorated_view
 
 @api.route('/setup/name', methods=['GET'])
@@ -46,7 +46,7 @@ def save_name():
 	name = request.values.get('name', None)
 
 	if not name or not re.search(r"^[a-zA-Z0-9\-_]+$", name):
-		return make_response('Invalid Name', 400)
+		return make_response('Nombre no válido', 400)
 	else:
 		if platform == "linux" or platform == "linux2":
 			if networkManager().setHostname(name):
@@ -83,7 +83,7 @@ def connect_internet():
 		else:
 			return ("Network %s not found" % data['id'], 404)
 
-	return ("Invalid Request", 400)
+	return ("Petición no válida", 400)
 
 @api.route('/setup/internet', methods=['PUT'])
 @not_setup_only
@@ -97,7 +97,7 @@ def save_hotspot_option():
 			s.save()
 			return jsonify()
 
-	return ("Invalid Request", 400)
+	return ("Petición no válida", 400)
 
 @api.route('/setup/astroprint', methods=['GET'])
 @not_setup_only
@@ -126,7 +126,7 @@ def login_astroprint():
 		if ap.signin(email, password):
 			return make_response("OK", 200)
 
-	return make_response('Invalid Credentials', 400)
+	return make_response('Credenciales no válidas', 400)
 
 @api.route('/setup/printer', methods=['GET'])
 @not_setup_only
@@ -144,7 +144,7 @@ def connection_settings():
 
 		return jsonify(response)
 
-	return make_response("Connection options not available", 400)
+	return make_response("Opciones de conexión no disponibles", 400)
 
 @api.route('/setup/printer', methods=['POST'])
 @not_setup_only
@@ -170,7 +170,7 @@ def save_connection_settings():
 
 		return make_response("OK", 200)
 
-	return make_response('Invalid Connection Settings', 400)
+	return make_response('Opciones de conexión no válidas', 400)
 
 @api.route('/setup/printer/profile', methods=['POST'])
 @not_setup_only
@@ -187,7 +187,7 @@ def save_printer_profile_settings():
 
 		return make_response("OK", 200)
 
-	return make_response('Invalid Connection Settings', 400)
+	return make_response('Opciones de conexión no válidas', 400)
 
 @api.route('/setup/done', methods=['POST'])
 @not_setup_only
