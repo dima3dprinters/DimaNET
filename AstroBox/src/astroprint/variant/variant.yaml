@@ -1,0 +1,20 @@
+networkName: DimaNET
+supportLink: mailto:soporte@dima3d.com?subject=Duda%20sobre%20DimaNET
+suppliesLink: http://www.dima3d.com
+productName: "DimaNET"
+productLink: "http://www.dima3d.com/"
+defaultHostname: dimanet
+welcomeMsgHeader: '¡Bienvenid@ a su nueva <span class="light">Dima</span>NET&trade;!'
+welcomeMsgContent: >
+ <h2 class="bold">¡Gracias por comprar una DimaNET&trade;!</h2>
+ <p>
+   Esperamos que la disfrutes mucho y que seas capaz de sacar
+   más partido a tu impresora 3D, ahora que puedes conectarla a la red.
+ </p>
+congratsMsg: <b>¡Felicidades!</b> Su DimaNET se encuentra ya lista. Ahora imprima algo interesante o, si te sientes con ganas, ¡cuéntaselo al mundo!
+share:
+   facebook:
+      link: https://www.dima3d.com
+   twitter:
+      link: https://www.dima3d.com
+      copy: "¡Acabo de instalar mi nueva DimaNET de @Dima_3D para conectar mi impresora 3D a la red! Consigue la tuya en www.dima3d.com"

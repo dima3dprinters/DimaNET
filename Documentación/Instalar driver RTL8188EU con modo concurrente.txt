@@ -1,0 +1,59 @@
+----INSTALAR DRIVER CON MODO CONCURRENTE PARA PINCHO WIFI FAST FW150US2.0 CON CHIP RTL8188EU EN LA RASPBERRY PI---
+
+
+1)  Nos logueamos en la Raspberry por SSH. La raspi debe estar conectada a Internet a través del cable Ethernet.
+
+2)  Descargar y descomprimir el código fuente del driver. Para ello usamos el comando:
+
+    $ cd && wget https://github.com/qvarker/rtl8188eu/archive/master.zip && unzip master.zip
+
+3)  Instalar en la Raspberry un kernel que disponga de cabeceras. Para ello lo más rápido es utilizar el comando:
+
+    $ sudo apt-get install linux-headers-rpi-rpfv linux-image-rpi-rpfv
+
+    Nos instalará la última versión del kernel disponible, como por ejemplo '3.18.0-trunk-rpi'. También instala uno más antiguo porque es dependencia de dkms, como el 3.2, pero lo ignoramos.
+
+4)  Nos vamos a /boot y allí hacemos:
+
+    $ sudo cp kernel.img kernel.img.bak      (Copia de seguridad)
+
+    $ sudo cp vmlinuz-3.18.0-trunk-rpi kernel.img
+
+    (Para la Raspberry 2, sería “kernel7.img” en lugar de “kernel.img”)
+
+    Así la raspberry iniciará con el nuevo kernel. Si no era “3.18.0-trunk-rpi”, ponemos la versión que fuera en el paso anterior.
+
+5)  Reiniciamos con:
+
+    $ sudo reboot
+
+    Y cuando reinicie comprobamos que ya estamos usando el nuevo kernel, mediante el comando:
+
+    $ uname -r
+
+    Debe dar como respuesta, según los ejemplos anteriores:
+
+    3.18.0-trunk-rpi
+
+6)  Escribimos los siguientes comandos para preparar la compilación e instalación del driver:
+
+    $ cd ~/rtl8188eu-master && ./make_drv
+
+    Ahora aparecerá esto:
+
+    Please select card type(1/2):
+    1) RTL8188eus
+    2) RTL8189es
+    #?
+
+    Escribimos un “1” para el chip rtl8188eu, y damos a intro.
+
+7)  Ahora compilamos e instalamos con:
+
+    $ make all && sudo make install
+
+    Tras reiniciar con “sudo reboot”, comprobamos que la instalación ha sido correcta escribiendo:
+
+    $ ifconfig -a
+
+    Y comprobando que aparecen dos interfaces inalámbricas (wlan0 y wlan1) al tener el pincho conectado.
