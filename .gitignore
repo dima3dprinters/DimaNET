@@ -33,7 +33,7 @@ local/*
 
 .webassets-cache
 .sass-cache
-src/astroprint/static/css/scss/*.css
-src/astroprint/static/css/gen/*.css
-src/astroprint/static/css/gen/*.css.map
-src/astroprint/static/js/gen/*.js
+AstroBox/src/astroprint/static/css/scss/*.css
+AstroBox/src/astroprint/static/css/gen/*.css
+AstroBox/src/astroprint/static/css/gen/*.css.map
+AstroBox/src/astroprint/static/js/gen/*.js
