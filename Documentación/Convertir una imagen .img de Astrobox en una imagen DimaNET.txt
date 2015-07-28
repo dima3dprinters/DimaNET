@@ -9,7 +9,7 @@
 
 4) Una vez dentro de la Raspi, en el directorio home de pi, descargar el paquete DimaNET del Github y descomprimirlo:
 
-$ wget https://github.com/dima3dprinters/DimaNET/archive/master.zip && unzip DimaNET-master.zip && rm DimaNET-master.zip
+$ wget -O DimaNET-master.zip https://github.com/dima3dprinters/DimaNET/archive/master.zip && unzip DimaNET-master.zip && rm DimaNET-master.zip
 
 
 5) Detener el servicio de Astrobox y sustituir todos sus ficheros por los nuevos modificados:
@@ -23,9 +23,13 @@ $ sudo rm -r /AstroBox/* && sudo cp -r ~/DimaNET-master/AstroBox/* /AstroBox
 
 $ cd ~/DimaNET-master/tools
 
-Y dentro dar permisos de ejecución y ejecutar el script instalador así:
+Damos permisos de ejecución a ciertos ficheros dentro:
 
-$ chmod +x install.sh && ./install.sh
+$ chmod +x install.sh makeImage setConfigs
+
+Ahora ejecutamos el script instalador, con permisos de root:
+
+$ sudo ./install.sh
 
 
 
