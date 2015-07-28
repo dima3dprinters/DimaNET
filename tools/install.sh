@@ -35,19 +35,18 @@ cd ../../
 rm v2.0.tar.gz
 
 echo " "
-echo "Configurando servicios al inicio..."
-echo " "
-update-rc.d isc-dhcp-server remove
-update-rc.d isc-dhcp-server defaults
-update-rc.d hostapd remove
-update-rc.d hostapd defaults
-
-
-echo " "
 echo "Moviendo ficheros de configuración a su lugar..."
 echo " "
-cd ../../
 ./setConfigs
+
+echo " "
+echo "Configurando servicios al inicio..."
+echo " "
+update-rc.d isc-dhcp-server enable
+update-rc.d hostapd enable
+update-rc.d astrobox enable
+
+service astrobox start
 
 echo " "
 echo "Limpiando la Raspberry..."

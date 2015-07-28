@@ -52,3 +52,8 @@ if [ ! -f /etc/network/interfaces.bak ]; then
 	mv /etc/network/interfaces /etc/network/interfaces.bak
 fi
 cp etc/network/interfaces /etc/network/interfaces
+
+
+echo "Moving a spanish file for 503 errors into place..."
+
+cp etc/astrobox/errors/503.http /etc/astrobox/errors/503.http
