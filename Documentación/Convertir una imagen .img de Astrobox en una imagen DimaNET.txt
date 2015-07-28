@@ -12,14 +12,7 @@
 $ wget -O DimaNET-master.zip https://github.com/dima3dprinters/DimaNET/archive/master.zip && unzip DimaNET-master.zip && rm DimaNET-master.zip
 
 
-5) Detener el servicio de Astrobox y sustituir todos sus ficheros por los nuevos modificados:
-
-$ sudo service astrobox stop
-
-$ sudo rm -r /AstroBox/* && sudo cp -r ~/DimaNET-master/AstroBox/* /AstroBox
-
-
-6) Ir al directorio tools:
+5) Ir al directorio tools:
 
 $ cd ~/DimaNET-master/tools
 

@@ -9,7 +9,7 @@ echo " "
 echo "Sustituyendo los ficheros modificados de Astrobox..."
 echo " "
 rm -r /AstroBox/*
-cp -r ~/DimaNET-master/AstroBox/* /AstroBox
+cp -r ../AstroBox/* /AstroBox
 
 echo " "
 echo "Actualizando el sistema..."
