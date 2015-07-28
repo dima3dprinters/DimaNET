@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd ~/DimaNET-master/tools
-make upgrade-system install-deps
+sudo make upgrade-system install-deps
 cd RTL8188-hostapd-2.0/hostapd
 make 
 sudo make install

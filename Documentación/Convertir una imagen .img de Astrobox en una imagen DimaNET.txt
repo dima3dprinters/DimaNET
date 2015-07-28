@@ -23,9 +23,9 @@ $ sudo rm -r /AstroBox/* && sudo cp -r ~/DimaNET-master/AstroBox/* /AstroBox
 
 $ cd ~/DimaNET-master/tools
 
-Y dentro ejecutar el script instalador así:
+Y dentro dar permisos de ejecución y ejecutar el script instalador así:
 
-$ ./install.sh
+$ chmod +x install.sh && ./install.sh
 
 
 
