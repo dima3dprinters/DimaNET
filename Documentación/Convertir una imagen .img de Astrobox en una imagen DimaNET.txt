@@ -23,9 +23,9 @@ $ sudo rm -r /AstroBox/* && sudo cp -r ~/DimaNET-master/AstroBox/* /AstroBox
 
 $ cd ~/DimaNET-master/tools
 
-Y dentro ejecutar el Makefile así:
+Y dentro ejecutar el script instalador así:
 
-$ sudo make all
+$ ./install.sh
 
 
 
