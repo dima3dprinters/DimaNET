@@ -3,7 +3,7 @@
 echo " "
 echo "Deteniendo el servicio de Astrobox..."
 echo " "
-service astrobox stop > /dev/null
+service astrobox stop
 
 echo " "
 echo "Sustituyendo los ficheros modificados de Astrobox..."
@@ -14,8 +14,8 @@ cp -r ../AstroBox/* /AstroBox
 echo " "
 echo "Actualizando el sistema..."
 echo " "
-apt-get update > /dev/null
-apt-get upgrade > /dev/null
+apt-get -qy update 
+apt-get -qy upgrade 
 
 echo " "
 echo "Instalando paquetes necesarios..."
