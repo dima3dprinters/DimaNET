@@ -68,7 +68,7 @@
 
     $ sudo update-initramfs -u
 
-8)  Tras reiniciar con “sudo reboot” y reiniciar la conexión SSH, conectamos el pincho. Comprobamos que la instalación ha sido correcta escribiendo:
+9)  Tras reiniciar con “sudo reboot” y reiniciar la conexión SSH, conectamos el pincho. Comprobamos que la instalación ha sido correcta escribiendo:
 
     $ ifconfig -a
 
