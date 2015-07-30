@@ -1,7 +1,7 @@
 ----INSTALAR DRIVER CON MODO CONCURRENTE PARA PINCHO WIFI FAST FW150US2.0 CON CHIP RTL8188EU EN LA RASPBERRY PI---
 
 
-1)  Nos logueamos en la Raspberry por SSH. La raspi debe estar conectada a Internet a través del cable Ethernet.
+1)  Nos logueamos en la Raspberry por SSH. La raspi debe estar conectada a Internet a través del cable Ethernet. No debemos conectar todavía el pincho USB.
 
 2)  Descargar y descomprimir el código fuente del driver. Para ello usamos el comando:
 
@@ -9,9 +9,9 @@
 
 3)  Instalar en la Raspberry un kernel que disponga de cabeceras. Para ello lo más rápido es utilizar el comando:
 
-    $ sudo apt-get install linux-headers-rpi-rpfv linux-image-rpi-rpfv
+    $ sudo apt-get update && sudo apt-get install linux-headers-rpi-rpfv linux-image-rpi-rpfv
 
-    Nos instalará la última versión del kernel disponible, como por ejemplo '3.18.0-trunk-rpi'. También instala uno más antiguo porque es dependencia de dkms, como el 3.2, pero lo ignoramos.
+    Nos instalará la última versión del kernel disponible, como por ejemplo '3.18.0-trunk-rpi'.
 
 4)  Nos vamos a /boot y allí hacemos:
 
@@ -37,7 +37,7 @@
 
 6)  Escribimos los siguientes comandos para preparar la compilación e instalación del driver:
 
-    $ cd ~/rtl8188eu-master && ./make_drv
+    $ cd ~/rtl8188eu-master && rm include/rtw_version.h && ./make_drv
 
     Ahora aparecerá esto:
 
@@ -52,7 +52,23 @@
 
     $ make all && sudo make install
 
-    Tras reiniciar con “sudo reboot”, comprobamos que la instalación ha sido correcta escribiendo:
+    Tardará bastante rato, estamos compilando desde una Raspberry.
+
+8)  Prohibimos al kernel que cargue el módulo anterior. Para ello, primero creamos este fichero:
+
+    $ sudo nano /lib/modprobe.d/r8188eu.conf
+
+    Y en él ponemos la línea: "blacklist r8188eu.conf" exclusivamente. Hacemos CTRL-o e intro para guardar desde el editor de texto nano.
+
+    Ahora recreamos los módulos y las dependencias con:
+
+    $ sudo depmod -ae
+
+    También recreamos el initramfs (aunque la Raspi no lo usa en principio, pero por si acaso):
+
+    $ sudo update-initramfs -u
+
+8)  Tras reiniciar con “sudo reboot” y reiniciar la conexión SSH, conectamos el pincho. Comprobamos que la instalación ha sido correcta escribiendo:
 
     $ ifconfig -a
 
